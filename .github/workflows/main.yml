@@ -14,10 +14,10 @@ jobs:
         uses: actions/checkout@v2
 
       - name: packages install
-        run: yarn install
+        run: npm install
 
       - name: gatsby build
-        run: yarn build
+        run: npm build
         env:
           # API_KEY 에는 자신이 secret을 생성할 때 설정한 이름으로 넣어야 한다
           GH_API_KEY: ${{ secrets.BLOG_ACTION_TOKEN }}
