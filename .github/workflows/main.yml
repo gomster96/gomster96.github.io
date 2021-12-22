@@ -17,7 +17,7 @@ jobs:
         run: npm install
 
       - name: gatsby build
-        run: npm build
+        run: npm run build
         env:
           # API_KEY 에는 자신이 secret을 생성할 때 설정한 이름으로 넣어야 한다
           GH_API_KEY: ${{ secrets.BLOG_ACTION_TOKEN }}
