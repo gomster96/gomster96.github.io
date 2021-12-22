@@ -27,8 +27,8 @@ In this template...
 - ☕ 'Buy me a coffee' service
 - 🤖 GA
 - ⭐ Enhance UX
-- ⚙ Configurable
-
+- a⚙ Configurable
+- aa
 > [About this Template](https://www.gatsbyjs.org/starters/JaeYeopHan/gatsby-starter-bee/)
 
 ## Demo
