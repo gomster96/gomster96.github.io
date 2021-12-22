@@ -3,7 +3,7 @@ module.exports = {
   description: `항상 노력하고 나아가는 주니어 백엔드 개발자 `,
   author: `Gomster`,
   introduction: `항상 노력하고 나아가는 주니어 백엔드 개발자입니다.`,
-  siteUrl: `https://gomster96.github.io/`, // Your blog site url
+  siteUrl: `https://gomster96.github.io`, // Your blog site url
   social: {
     twitter: ``, // Your Twitter account
     github: `gomster96`, // Your GitHub account
