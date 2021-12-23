@@ -1,6 +1,6 @@
 ---
 title: '자바의 정석 2장 변수 variable'
-date: 2021-12-23 16:21:13
+date: 2021-12-23 16:22:13
 category: '자바의 정석'
 draft: false
 ---
