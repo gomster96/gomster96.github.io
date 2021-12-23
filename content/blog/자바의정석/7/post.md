@@ -1,5 +1,5 @@
 ---
-title: '자바의 정석 7장 객체지향 프로그래밍 2'
+title: '[자바의 정석] 7장 객체지향 프로그래밍 2'
 date: 2021-12-23 16:39:13
 category: '자바의 정석'
 draft: false
@@ -33,7 +33,7 @@ Object클래스는 모든 클래스의 상속계층도의 최상위에 있는 �
 
 → toString(), equals와 같은 메서드를 정의하지 않고 사용할 수 있었던 이유는 이 메서드들이 모두 Object클래스에 정의된 것들이기 때문이다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/36528b0f-3513-492d-89bb-ced4e126a8b4/Untitled.png)
+<p align="center"><img src="./1.png" height="100px" width="500px"></p>
 
 ## 2. 포함
 
@@ -229,7 +229,139 @@ class Singleton{
 
 # 5. 다형성
 
+## 다형성이란?
+
+다형성이란 여러가지 형태를 가질 수 있는 능력을 의미한다.
+
+- 조상클래스 타입의 참조변수로 자손 클래스의 인스턴스를 참조 할 수 있다.
+- 참조변수가 사용할 수 있는 멤버의 개수는 인스턴스의 멤버의 개수보다 같거나 적어야한다.
+- 자손타입의 참조변수로 조상타입의 인스턴스를 참조할 수 없다
+
+```java
+class Tv{
+	boolean power;
+	int channel;
+
+	void power() { power = !power; }
+	void channelUp() { ++channel;}
+	void channelDown() {--channel; }
+}
+
+class CaptionTv extends Tv {
+	String text;
+	void caption() { /*내용 생략*/ }
+}
+
+```
+
+위에 예제에서 다형성에 의해 다음과 같은 선언이 가능하다.
+
+```java
+
+CaptionTv c = new CaptionTv();
+Tv t = new CaptionTv();
+
+```
+
+단 둘다 같은 타입의 인스턴스지만 참조변수의 타입에 따라 사용할 수 있는 멤버의 개수가 달라진다
+
+- Tv는 CaptionTv의 조상클래스이므로 Tv는 text라는 멤버변수를 사용할 수 없다.
+
+## 참조변수의 형변환
+
+기본형 변수처럼 참조변수도 형변환이 가능하다.
+
+- 서로 상속관계에 있는 클래스 사이에서만 가능하다. 즉 자손타입의 참조변수를 조상타입으로, 조상타입의 참조변수를 자손타입의 참조변수로의 형변환만 가능하다.
+- 참조변수의 형변환도 캐스트연산자를 사용한다.
+  - 다음과 같이 사용한다 : (변환하고자하는 클래스명)변환하고자하는참조변수
+    > 자손타입 -> 조상타입(Up-casting) : 형변환 생략가능 <br>
+    > 자손타입 <- 조상타입(Down-casting) : 형변환 생략불가
+
+형변환은 참조변수의 타입을 변환하는 것이지 **인스턴스를 변환하는 것이 아니기 때문에** 참조변수의 형변화는 **인스턴스의 아무런 영향을 미치지 않는다**. <br>
+
+참조변수의 형변환을 통해서 참조하고 있는 인스턴스에서 **사용할 수 있는 멤버의 범위(개수)를 조절**하는 것이 가능하다.
+
+참조변수가 가리키는 **인스턴스의 자손타입으로 형변환은 허용되지 않는다.(더 넓은 범위를 갖는 것이기 때문)** 따라서 참조변수가 **가르키는 인스턴스의 타입**이 무엇인지 확인하는 것이 중요하다.
+
+## instanceof 연산자
+
+- **인스턴스의 실제 타입**을 알아보기 위해 사용하는 연산자이다.
+- intanceof를 이용한 연산결과로 true를 얻었다는 것은 참조변수가 검사한 타입으로 **형변환이 가능**하다는 것을 의미한다.
+
+```java
+class InstanceofTest{
+	public static void main(String args[]){
+		FireEngine fe = new FireEngine();
+
+		if(fe instanceof FireEngine){
+			System.out.println("This is a FireEngine Instance.");
+		}
+		if(fe instanceof Car){
+			System.out.println("This is a Car Instance.");
+		}
+		if(fe instanceof Object){
+			System.out.println("This is an Object Instance");
+		}
+	}
+}
+class Car{}
+class FireEngine extends Car{}
+
+/*
+결과는 다음과 같다
+This is a FireEngine Instance
+This is a Car Instance
+This is a Object Instance
+*/
+```
+
+- 생성된 인스턴스는 FireEngine의 인스턴스이며 Car의 인스턴스이고, Object의 인스턴스이다.
+- Object클래스는 모든 클래스의 조상클래스이다.
+
+## 매개변수의 다형성
+
+참조변수의 다형적인 특징에 의해 매개변수도 마찬가지로 다형성을 지닌다.
+
+아래 예시의 Computer와 Audio가 Product를 extends했다고 치면
+
+```java
+void buy(Computer c){
+	money = money - c.price;
+	bonusPoint = bonusPoint + c.bonusPoint;
+}
+void buy(Audio a){
+	money = money - a.price;
+	bonusPoint = bonusPoint + a.bonusPoint;
+}
+// 위에 중복되는 두개의 메서드는 조상 클래스인 Product에 멤버변수로 price와 bonusPoint가 있다면
+// 다음과 같이 하나의 메서드로 처리해줄 수 있다.
+void buy(Product p){
+	money = money - p.price;
+	bonusPoint = bonusPoint + p.bonusPoint;
+}
+```
+
+## 여러 종류의 객체를 배열로 다루기
+
+만약 아래의 Tv, Computer, Audio클래스가 모두 Product클래스를 extends 했다고 가정하면 다음과 같이 사용할 수 있다.
+
+```java
+Product p1 = new Tv();
+Product p2 = new Computer();
+Product p3 = new Audio();
+// 위에 3줄을 아래와 같이 배열로 바꿀 수 있다.
+Product[] p= new Product[3];
+p[1] = new Tv();
+p[2] = new Computer();
+p[3] = new Audio();
+```
+
 # 6. 추상클래스
+
+- 추상클래스는 미완성의 설계도이다.
+- 미완성의 메서드(추상메서드)를 포함하고 있다.
+- 추상클래스로는 인스턴스를 생성할 수 없다. 하지만 츠상클래스는 상속을 통해 자손클래스에 의해서만 완성될 수 있다.
+- 추상클래스는 클래스에 키워드 **abstract**만 붙이면 된다.
 
 # 7. 인터페이스
 

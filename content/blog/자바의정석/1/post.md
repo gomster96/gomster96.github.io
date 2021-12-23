@@ -1,5 +1,5 @@
 ---
-title: '자바의 정석 1장 자바를 시작 하기전에(JVM, GC)'
+title: '[자바의 정석] 1장 자바를 시작 하기전에(JVM, GC)'
 date: 2021-12-23 16:21:13
 category: '자바의 정석'
 draft: false

@@ -1,5 +1,5 @@
 ---
-title: '자바의 정석 5장 배열 Array'
+title: '[자바의 정석] 5장 배열 Array'
 date: 2021-12-23 16:25:13
 category: '자바의 정석'
 draft: false
