@@ -152,7 +152,7 @@ Class cObj = Class.forName("Card");
 
 # String 클래스
 
-- String클래스는 변겨불가능한(immutable) 클래스이다.
+- String클래스는 변경불가능한(immutable) 클래스이다.
   - 덧셈 연산자 등으로 문자열을 결합하거나 수정하는 연산할 때마다 새로운 문자열을 가진 String 인스턴스가 생성되는 것이다
   - 문자열의 변경이 잦은 작업을 할 경우 String클래스 대신 StringBuffer클래스를 사용하는 것이 좋다.
 - 모든 문자열 리터럴은 컴파일 시에 클래스 파일에 저장된다.
