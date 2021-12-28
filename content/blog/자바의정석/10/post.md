@@ -89,7 +89,8 @@ Calendar time2 = Calendar.getInstance();
 long difference = Math.abs(time2.getTimeInMillis() - time1.getTimeInMillis()) / 1000;
 
 System.out.println("time1과 time2의 차이는 " + difference + "입니다");
-
+final int[] TIME_UNIT = {3600, 60, 1};
+final String[] TIME_UNIT_NAME = {"시간", "분", "초"};
 String tmp = "";
 for(int i=0; i< TIME_UNIT.length; i++){
 	tmp += difference/TIME_UNIT[i] + TIME_UNIT_NAME[i];
@@ -97,3 +98,132 @@ for(int i=0; i< TIME_UNIT.length; i++){
 }
 System.out.println("시분초로 변환하면 " + tmp + "입니다.");
 ```
+
+## 날짜 증가 및 감소
+
+add(int field, int amount)
+
+- 지정한 필드의 값을 원하는 만큼 증가 또는 감소가 가능하다
+
+```java
+date.set(2015, 7, 31); // 2015년 8월 31일로 설정한다.
+
+date.add(Calendar.DATE, 1); // date의 날짜를 1일 후로 설정한다.
+date.add(Calendar.MONTH, -6) // date의 날짜를 6달 전으로 바꾼다
+```
+
+roll(int feild, int amount)
+
+- add와 마찬가지로 지정한 필드의 값을 증가 또는 감소시킬수 있지만, add와의 차이점은 다른 필드에 영향을 미치지 않는다.
+- 예를들어 31일이 넘어가도 그때는 새롭게 month는 그대로 유지하고 date만 1일이 되는 것이다.
+
+```java
+date.set(2015, 7, 31); // 2015년 8월 31일로 설정한다.
+
+date.add(Calendar.DATE, 1); // date의 날짜를 1일 후로 설정한다.
+date.add(Calendar.MONTH, -6) // date의 날짜를 6달 전으로 바꾼다
+```
+
+Calendar 클래스의 추가적인 내용은 필요할 때마다 [공식문서](https://docs.oracle.com/javase/8/docs/api/java/util/Calendar.html)를 참조해가며 적용하면 좋을 것 같다.
+
+# 형식화 클래스
+
+어떤 것을 출력하거나 입력할 때 필요에 따라 형식을 지정해주어서 사용할 줄 알면 편리한 기능이다.
+
+## DeciamlFormat
+
+DecimalFormat은 숫자 데이터를 정수, 부동소수점, 금액 등 다양한 형식으로 숫자를 형식화 하는데 사용한다.
+
+<p align="center"><img src="1.png" height="400px" width="550px"></p>
+위의 사진처럼 각 기호들마다 숫자를 형식화 할 때 사용할 수 있는 기능들이 있다.
+아래와 같이 사용한다.
+
+```java
+double number = 1234567.89;
+DeciamlFormat df = new DecimalFormat("#.#E0");
+String result = df.format(number);
+```
+
+위에 예시처럼 DecimalFormat생성자의 원하는 형식 대로 넣어주어 생성해주고 이를 format 함수를 통해 형식화 시킨다.
+
+더 자세한 사용에 관해서는 [공식문서](https://docs.oracle.com/javase/8/docs/api/java/text/DecimalFormat.html)를 확인하자.
+
+## SimpleDateFormat
+
+Date와 Calendar 만으로 날 짜 데이터를 원하는 형태로 다양하게 출력하는 것이 불편하고 복잡할 때 SimpleDateFormat을 사용하여 간단히 할 수 있다.
+
+<p align="center"><img src="2.png" height="400px" width="550px"></p>
+- DecimalDateFormat 처럼 SimpleDateFormat 에서도 사용하는 각각의 기호들이 있다. 해당 기호들을 원하는 방법대로 적절히 사용하는 것이 중요하다.
+
+간단한 예를 들면
+
+```java
+Date today = new Date();
+SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+// 오늘 날짜를 yyyy-MM-dd 형태로 변환하여 반환한다.
+String result = df.format(today); // Date객체를 format 함수에 넣어주어 사용한다.
+
+SimpleDateFormat df2 = new SimpleDateFormat("yyyy년-MM월-dd일 E요일 HH시 mm분 ss초");
+// 다음과 같이 중간에 원하는 문자를 넣어주어 formating이 가능하다
+String result2 = df.format(today);
+```
+
+위에 예시처럼 date객체를 format함수에 넣어주어 원하는 SimpleDateFormat의 꼴에 따라 값을 출력해준다.
+
+- Date인스턴스만 format 메서드에 사용할 수 있다.
+
+parse(String source)를 사용해서 날짜 데이터의 출력형식에 따른 date객체를 가져올 수 있다.
+
+```java
+import java.util.*;
+import java.text.*;
+
+class DateFormatEx3{
+	public static void main(String[] args){
+		DateFormat df = new SimpleDateFormat("yyyy년 MM월 dd일");
+		DateFormat df2 = new SimpleDateFormat("yyyy/MM/dd");
+
+		// parse함수는 입력된 형식이 일치하지 않을 경우 예외가 발생하므로 예외처리가 필요하다.
+		try{
+			Date d = df.parse("2015년 11월 23일"); // 다음과 같이 df의 형식을 빼와서
+			System.out.println(df2.format(d)); // 새로운 df2의 형식에 넣을 수 있다.
+		} catch(Exception e){}
+	}
+}
+
+```
+
+더 자세한 관련 내용은 [공식문서](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html)를 통해 필요할 때마다 찾아서 익히면 될 것 같다.
+
+## MessageFormat
+
+MessageFormat은 데이터를 정해진 양식에 맞게 출력할 수 있게 한다. 또한 parse를 이용하여 지정된 양식에서 필요한 데이터만을 손쉽게 추출해 낼 수도 있다.
+
+```java
+import java.text.*;
+
+class MessageFormatEx1{
+	public static void main(String[] args){
+		String msg = "Name: {0} \ntel: {1} \nAge:{2} \nBirthday:{3}";
+
+		Object[] arguments = {
+			"이자바", "02-123-1234", "27", "07-19"
+		};
+
+		String result = MessageFormat.format(msg, arguments);
+		System.out.println(result);
+
+		MessageFormat mf = new MessageFormat(msg);
+		Object[] objs = mf.parse("Name: 홍길동 \ntel:010-111-1111 \nAge:27 \nBirthday:01/01");
+
+		for(Object obj : objs){
+			System.out.println(obj);
+		}
+	}
+}
+
+```
+
+# Reference
+
+형식화 관련 사진 : https://tenlie10.tistory.com/30
