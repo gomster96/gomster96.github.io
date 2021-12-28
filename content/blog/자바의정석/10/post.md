@@ -224,6 +224,110 @@ class MessageFormatEx1{
 
 ```
 
+# java.time 패키지
+
+지금까지 사용했던 Date와 Calendar가 가지고 있던 단점들을 해소하기 위해 더 다야한 기능을 하는 java.time 패키지가 추가되었다.
+
+- java.time : 날짜와 시간을 다루는데 필요한 핵심 클래스들을 제공
+- java.time.chrono : 표준(ISO)이 아닌 달력 시스템을 위한 클래스들을 제공
+- java.time.format : 날짜와 시간을 파싱하고, 형식화하기 위한 클래스들을 제공
+- java.time.temporal : 날짜와 시간의 필드(field)와 단위(unit)를 위한 클래스들을 제공
+- java.time.zone : 시간대(time-zone)와 관련된 클래스들을 제공
+
+Calendar클래스와 달리 위에 time패키지에 속한 클래스들은 String클래스처럼 불변(immutable)한 성질을 갖고 있다.
+
+- 무엇인가 변경이 있을 때 마다 수정이 아닌 **새로운 객체**를 반환한다.
+
+## LocalDate 와 LocalTime
+
+LocalDate는 날짜를 표현하는 클래스이며, LocalTime은 시간을 표현하는 클래스이다. 날짜와 시간이 모두 필요할때는 LocalDateTime 클래스를 사용한다.
+
+- LocalDate.now() : 현재의 날짜를 반환한다.
+- LocalTime.now() : 현재의 시간을 반환한다.
+- 클래스.of : 각 객체를 생성해 준다.
+
+```java
+LocalDate today = LocalDate.now(); // 오늘의 날짜
+LocalTime now = LocalTime.now(); // 현재시간
+
+LocalDate birthDate = LocalDate.of(1999, 12, 31); //1999년 12월 31일의 객체 생성
+LocalTime birthTime = LocalTime.of(23, 59, 59); //23시 59분 59초
+```
+
+이외에도 LocalDate에는 getYear, getMonthValue 등의 함수가 있고 LocalTime에는 getHour, getMinute등의 함수가 있다. 이후 공식문서에서 필요에 따라 찾아쓰면 좋을 것 같다. [LocalDate공식문서](https://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html), [LocalTime공식문서](https://docs.oracle.com/javase/8/docs/api/java/time/LocalTime.html)
+
+## 필드의 값 변경하기 - with(), plus(), minus
+
+### with()
+
+필드의 값을 변경하기 위해서는 with로 시작하는 메서드를 사용한다
+
+```java
+LocalDate withYear(int year)
+LocalDate withMonth(int month)
+LocalDate withDayOfMonth(int dayOfMonth)
+LocalDate withDayOfYear(int dayOfYear)
+
+LocalTime withHour(int hour)
+LocalTime withMinute(int minute)
+LocalTime withSecond(int second)
+LocalTime withNano(int nanoOfSecond)
+```
+
+이렇게 이름만 봐도 알드시 with()를 사용하면 원하는 필드를 직접 지정하여 변경해줄수 있다. 단 위에 변경하는 메서드들은 항상 새로운 객체를 생성해서 반환하므로 아래처럼 반환은 받는 참조변수가 꼭 있어야한다.
+
+```java
+date = date.withYear(2000);
+time = time.withHour(12);
+```
+
+### plus(), minus()
+
+마찬가지로 필드의 값을 더하거나 뺴주는 메소드로 plus()와 minus()가 있다. 아래 예시는 plus나 minus 다 사용가능하다
+
+```java
+LocalTime plus(TemporalAmount amountToAdd)
+LocalTime plus(long amountToAdd, TemporalUnit unit)
+
+LocalDate plus(TemporalAmount amountToAdd)
+LocalDate plus(long amountToAdd, TemporalUnit unit)
+
+LocalDate plusYears(long yearsToAdd)
+LocalDate plusMonths(long monthsToAdd)
+LocalDate plusDays(long daysToAdd)
+LocalDate plusWeeks(long weeksToAdd)
+
+LocalTime plusHours(long hoursToAdd)
+LocalTime plusMinutes(long hoursToAdd)
+LocalTime plusSeconds(long hoursToAdd)
+LocalTime plusNanos(long hoursToAdd)
+```
+
+## 날짜와 시간의 비교 - isAfter(), isBefore(), isEqual()
+
+```java
+boolean isAfter(chronoLocalDate other)
+boolean isBefore(chronoLocalDate other)
+boolean equal(chronoLocalDate other) // 연표까지 같아야함
+boolean isEqual(chronoLocalDate other) //연표는 달라도 됨, LocalDate에만 있음
+
+//ex
+myDate.isEquals(otherDate); // 이런식으로 사용함
+```
+
+# LocalDateTime과 ZonedDateTime
+
+> LocalDate + LocalTime -> LocalDateTime <br>
+> LocalDateTime + 시간대 -> ZonedDateTime
+
+위의 식처럼 LocalDateTime은 LocalDate와 LocalTime을 합쳐서 만든다. 따라서 LocalDateTime을 만들기 위한 다양한 of들 및 생성하는 방법이 있다. [공식문서](https://docs.oracle.com/javase/8/docs/api/java/time/LocalDateTime.html)를 참고하자.
+
+Zone은 시간대(time-zone)를 뜻한다. 즉 "Asia/Seoul", "America/New_Yourk" 와 같은 특정 시간대를 추가하는 역할을 한다.
+
+# 마무리
+
+지금까지 시간을 나타내는 다양한 클래스들에 대해서 알아보았다. 워낙 내용이 많고 얕으니 필요할때마다 공식문서를 참고하며 활용하도록 하자.
+
 # Reference
 
 형식화 관련 사진 : https://tenlie10.tistory.com/30
