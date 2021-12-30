@@ -32,7 +32,8 @@ draft: false
 
 <p align="center"><img src="2.png" height="700px" width="700px"></p>
  
-위의 사진은 [공식문서](https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html) 에 적혀있는 List와 Set의 조상인 Collection 인터페이스에 정의되어 있는 메서드 들이다.
+위의 사진은
+[공식문서](https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html) 에 적혀있는 List와 Set의 조상인 Collection 인터페이스에 정의되어 있는 메서드 들이다.
 
 Collection 인터페이스는 다음과 같은 기능이 포함되어 있다.
 
