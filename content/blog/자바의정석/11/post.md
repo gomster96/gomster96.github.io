@@ -1,5 +1,5 @@
 ---
-title: '[자바의 정석] 11장 커렉션 프레임웍 Collections Framework - 1'
+title: '[자바의 정석] 11장 컬렉션 프레임웍 Collections Framework - 1'
 date: 2021-12-30 01:52:00
 category: '자바의 정석'
 draft: false

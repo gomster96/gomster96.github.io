@@ -1,5 +1,5 @@
 ---
-title: '[자바의 정석] 11장 커렉션 프레임웍 Collections Framework - 2'
+title: '[자바의 정석] 11장 컬렉션 프레임웍 Collections Framework - 2'
 date: 2021-12-31 16:28:00
 category: '자바의 정석'
 draft: false
@@ -35,7 +35,7 @@ HashSet에서는 두 객체의 해시코드가 같고, equals메서드를 호출
 
 ### hashCode()
 
-요소를 같은 것인지 판별하기 위해서 hashCode 메서드를 호출하며 이를 목적에 맞게 오버라이딩하여 사용해야한다
+요소를 같은 것인지 판별하기 위해서 hashCode 메서드를 호출하며 이를 목적에 맞게 오버라이딩하여 사용해야한다.
 
 ```java
 public int hashCode(){
