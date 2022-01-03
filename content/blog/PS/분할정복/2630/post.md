@@ -9,7 +9,7 @@ draft: false
 
 <p align="center"><img src="1.png" height="600px" width="600px"></p>
 
-백준 문제 링크 : https://www.acmicpc.net/problem/11582
+백준 문제 링크 : https://www.acmicpc.net/problem/2630
 
 # 풀이전략
 
