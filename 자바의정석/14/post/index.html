@@ -106,7 +106,7 @@
 		<span class="token comment">// 작업내용 // Runnable 인터페이스의 run()을 구현</span>
 	<span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre></div>
-<p>두가지 방법이 있지만 Thread클래스를 상속받으면 다른 클래스를 상속받을 수 없기 때문에 Runnable 인터페이스를 구현하는 방법이 일반적이며 보다 객체지향적인 방법이다.</p>
+<p>두가지 방법이 있지만 Thread클래스를 상속받으면 다른 클래스를 상속받을 수 없기 때문에 Runnable 인터페이스를 구현하는 방법이 일반적이며 보다 객체지향적인 방법이다!</p>
 <p>결국에 쓰래드를 구현한다는 것은 쓰래드를 통해 작업하고자하는 내용으로 사용되는 run()함수를 구현하는 것이다.</p>
 <h3 id="runnable-interface를-구현한-thread의-정보" style="position:relative;"><a href="#runnable-interface%EB%A5%BC-%EA%B5%AC%ED%98%84%ED%95%9C-thread%EC%9D%98-%EC%A0%95%EB%B3%B4" aria-label="runnable interface를 구현한 thread의 정보 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Runnable interface를 구현한 Thread의 정보</h3>
 <p>Thread를 extend하여 구현하면 Thread클래스의 메서드를 직접호출 할 수 있지만 Runnable을 구현하여 사용할 경우 currentTread()를 호출하여 쓰레드에 대한 참조를 받아와야 한다.</p>
