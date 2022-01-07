@@ -229,3 +229,7 @@ List checkedList = checkedList(list, String.class); //String만 저장 가능하
 checkedList.add("abc");
 checkList.add(new Integer(3)); // 에러 발생한다
 ```
+
+# Reference
+
+- 남궁성, Java의 정석 (3rd Edition), 도우출판

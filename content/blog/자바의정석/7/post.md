@@ -484,3 +484,7 @@ interface My{
 	default void newMethod();
 }
 ```
+
+# Reference
+
+- 남궁성, Java의 정석 (3rd Edition), 도우출판

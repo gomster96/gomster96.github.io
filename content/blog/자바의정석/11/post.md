@@ -431,4 +431,5 @@ Collections.sort(playrs, (a,b) => b.getScore() - a.getScore()); //이런식으�
 
 # Reference
 
-사진 : https://perfectacle.github.io/2017/08/05/Java-study-015day/
+- 남궁성, Java의 정석 (3rd Edition), 도우출판
+- 사진 : https://perfectacle.github.io/2017/08/05/Java-study-015day/

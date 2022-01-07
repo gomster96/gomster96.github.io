@@ -330,4 +330,5 @@ Zone은 시간대(time-zone)를 뜻한다. 즉 "Asia/Seoul", "America/New_Yourk"
 
 # Reference
 
-형식화 관련 사진 : https://tenlie10.tistory.com/30
+- 남궁성, Java의 정석 (3rd Edition), 도우출판
+- 형식화 관련 사진 : https://tenlie10.tistory.com/30

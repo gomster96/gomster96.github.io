@@ -69,8 +69,6 @@ int data = sc.nextInt(); // data에 다음 입력받는 int를 저장한다
 String data = sc.nextLine(); // data에 다음 입력하는 라인을 저장한다.
 ```
 
-# 배운점
+# Reference
 
-자바 네이밍 컨벤션 찾아보기
-
-Wrapper 클래스 찾아보기
+- 남궁성, Java의 정석 (3rd Edition), 도우출판

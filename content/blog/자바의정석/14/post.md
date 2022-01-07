@@ -726,4 +726,5 @@ class SumTask extends RecursiveTask<Long>{
 
 # Reference
 
-쓰레드 상태 관련 사진 https://smujihoon.tistory.com/160
+- 남궁성, Java의 정석 (3rd Edition), 도우출판
+- 쓰레드 상태 관련 사진 https://smujihoon.tistory.com/160

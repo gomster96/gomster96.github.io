@@ -103,3 +103,7 @@ AND 연산 &&의 경우 좌측 피연산자가 'false' 이면 우측 피연산�
 x << n // x * 2^n
 x >> n // x / 2^n
 ```
+
+# Reference
+
+- 남궁성, Java의 정석 (3rd Edition), 도우출판

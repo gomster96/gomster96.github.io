@@ -155,14 +155,16 @@ Native Method Stack
 
 - 자바 외 언어로 작성된 네이티브 코드를 위한 메모리 영역입니다.
 
-참고
+# Reference
 
-[https://jins-dev.tistory.com/entry/Java-클래스로더ClassLoader에-대한-이해](https://jins-dev.tistory.com/entry/Java-%ED%81%B4%EB%9E%98%EC%8A%A4%EB%A1%9C%EB%8D%94ClassLoader%EC%97%90-%EB%8C%80%ED%95%9C-%EC%9D%B4%ED%95%B4)
+- 남궁성, Java의 정석 (3rd Edition), 도우출판
 
-[https://steady-coding.tistory.com/305](https://steady-coding.tistory.com/305)
+- [https://jins-dev.tistory.com/entry/Java-클래스로더ClassLoader에-대한-이해](https://jins-dev.tistory.com/entry/Java-%ED%81%B4%EB%9E%98%EC%8A%A4%EB%A1%9C%EB%8D%94ClassLoader%EC%97%90-%EB%8C%80%ED%95%9C-%EC%9D%B4%ED%95%B4)
 
-[https://goodgid.github.io/Java-Class-Loader/](https://goodgid.github.io/Java-Class-Loader/)
+- [https://steady-coding.tistory.com/305](https://steady-coding.tistory.com/305)
 
-[https://jins-dev.tistory.com/entry/가비지-컬렉터Garbage-Collector-의-개념과-동작-원리](https://jins-dev.tistory.com/entry/%EA%B0%80%EB%B9%84%EC%A7%80-%EC%BB%AC%EB%A0%89%ED%84%B0Garbage-Collector-%EC%9D%98-%EA%B0%9C%EB%85%90%EA%B3%BC-%EB%8F%99%EC%9E%91-%EC%9B%90%EB%A6%AC)
+- [https://goodgid.github.io/Java-Class-Loader/](https://goodgid.github.io/Java-Class-Loader/)
 
-[https://mangkyu.tistory.com/118](https://mangkyu.tistory.com/118)
+- [https://jins-dev.tistory.com/entry/가비지-컬렉터Garbage-Collector-의-개념과-동작-원리](https://jins-dev.tistory.com/entry/%EA%B0%80%EB%B9%84%EC%A7%80-%EC%BB%AC%EB%A0%89%ED%84%B0Garbage-Collector-%EC%9D%98-%EA%B0%9C%EB%85%90%EA%B3%BC-%EB%8F%99%EC%9E%91-%EC%9B%90%EB%A6%AC)
+
+- [https://mangkyu.tistory.com/118](https://mangkyu.tistory.com/118)

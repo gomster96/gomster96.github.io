@@ -21,4 +21,211 @@ draft: false
 (매개변수 선언) ->{
     문장들
 }
+
+// ex
+(int a, int b) -> {return a > b ? a : b ;}
+// 리턴문이 들어가 있으므로 문장(statement)이기 때문에 ;가 있어야한다, return이 있을경우 {}를 생략 불가
+(int a, int b) -> a > b ? a : b
+// return문이 없는 식이므로 ; 가 필요 없다
+(a, b) -> a > b ? a : b
+// 람다식에서 선언된 매개변수의 타입은 추론 가능할 경우 생략 가능하다.
 ```
+
+## 함수형 인터페이스 (Functional Interface)
+
+사실 람다식은 익명 클래스의 객체와 동등하다
+
+```java
+(int a, int b) -> a > b ? a : b;
+// 위의 식은 아래와 동일하다.
+new Object(){
+    int max(int a, int b){
+        return a > b ? a : b;
+    }
+}
+```
+
+따라서 람다식에서 참조변수의 타입은 클래스 또는 인터페이스만 가능하다.
+
+하나의 메서드가 선언된 인터페이스를 정의해서 람다식을 다룬다. 이를 위한 인터페이스를 `함수형인터페이스`라고 한다.
+
+```java
+@FunctionalInterface
+interface MyFunction{ // 함수형 인터페이스 MyFUnction을 정의
+    public abstract int max(int a, int b);
+}
+```
+
+- 함수형 인터페이스에는 오직 하나의 추상 메서드만 정의되어 있어야 하는 제약이 있다.
+- static메서드와 default메서드의 개수에는 제약이 없다.
+
+## java.util.function 패키지
+
+java.util.function패키지에는 일반적으로 자주 쓰이는 형식의 메서드를 함수형 인터페이스로 미리 정의해 놓았다. 가능하면 이 패키지의 인터페이스를 활용하는 것이 좋다.
+
+<p align="center"><img src="1.png" height="400px" width="600px"></p>
+
+## Predicate : 조건식 표현에 사용
+
+- Predicate는 Function의 변형으로, 반환타입이 boolean이라는 것만 다르다.
+- Predicate는 조건식을 람다식으로 표현하는데 사용된다.
+
+```java
+Predicate<String> isEmptyStr = s -> s.length() == 0;
+String s = "";
+if(isEmptyStr.test(s)) // if(s.length == 0)
+    System.out.println("This is an emtpy String.");
+```
+
+## 접두사 Bi : 매개변수가 두 개인 함수형 인터페이스
+
+<p align="center"><img src="2.png" height="200px" width="600px"></p>
+이후 두개 이상의 매개변수를 갖는 함수형 인터페이스가 필요하다면 직접 만들어서 써야한다.
+```java
+@FunctionalInterface
+interface TriFunction<T, U, V, R>{
+    R apply(T t, U u, V v);
+}
+```
+
+## UnaryOperator와 BINaryOperator
+
+Function의 또 다른 변형으로 매개변수의 타입과 반환타입이 모두 일치할 경우 사용한다.
+
+<p align="center"><img src="3.png" height="200px" width="600px"></p>
+
+## 컬렉션 프레임웍과 함수형 인터페이스
+
+아래 표는 컬렉션 프레임웍에서 인터페이스에 함수형 인터페이스를 사용하는 메서드들의 목록이다.
+
+<p align="center"><img src="4.png" height="300px" width="600px"></p>
+아래와 같은 방법으로 사용한다
+
+```java
+import java.util.*;
+public class LambdaEx4 {
+    public static void main(String[] args){
+        ArrayList<Integer> list = new ArrayList<>();
+        for (int i = 0; i < 10; i++) list.add(i);
+
+        list.forEach(i -> System.out.println(i + ","));
+        System.out.println();
+
+        list.removeIf(x -> x % 2 == 0 || x % 3 == 0);
+        System.out.println(list);
+
+        list.replaceAll(i -> i * 10);
+        System.out.println(list);
+
+        Map<String, String> map = new HashMap<>();
+        map.put("1", "1");
+        map.put("2", "2");
+        map.put("3", "3");
+        map.put("4", "4");
+
+        map.forEach((k, v) -> System.out.println("{" + k + "," + "},"));
+        System.out.println(list);
+    }
+}
+
+```
+
+## 기본형을 사용하는 함수형 인터페이스
+
+기본갑을 사용할 때도 대부분 래퍼(wrapper)클래스를 사용해왔다. 하지만 더 효율적으로 처리하기 위해 기본형을 ㅏㅅ용하는 함수형 인터페이스들이 있다.
+
+<p align="center"><img src="5.png" height="300px" width="600px"></p>
+
+## Function의 합성과 Predicate의 결합
+
+java.util.function패키지의 함수형 인터페이스에는 추상메서드 외에도 디폴트 메서드와 static메서드들이 있다.
+
+```java
+// Function
+default <V> Function<T, V> andThen (Function<? super R, ? extends V> after)
+// f.andThen(g) : f이후에 그 결과로 g 실행
+default <V> Function<V, R> compose (Function<? super V, ? extends T> before)
+// f.compose(g) : g실행이후에 그결과로 f실행
+static <T> Function<T, T> indetity()
+// 항등함수
+// Predicate
+default Predicate<T> and(Predicate<? super T> other)
+default Predicate<T> or(Predicate<? super T> other)
+default Predicate<T> negate()
+static <T> Predicate<T> isEqual(Object targetRef)
+// Predicate<Integer> all = notP.and(q.or(r));
+```
+
+## 메서드 참조
+
+람다식이 하나의 메서드만 호출하는 경우에는 `메서드참조(method reference)`라는 방법으로 람다식을 간략하게 할 수 있다.
+
+```java
+// ex1
+Function<String, Integer> f = (String s) -> Integer.parseInt(s);
+// 위의 식으로 람다식을 간략하게 할 수 있다.
+Function<String, Integer> f = Integer::parseInt;
+
+// ex2
+BiFunction<String, String, Boolean> f = (s1, s2) -> s1.equals(s2);
+// 위의 식으로 람다식을 간략하게 할 수 있다.
+BiFuction<String, String, Boolean> f = String::equals;
+```
+
+즉 하나의 메서드만 호출하는 람다식은 `클래스이름::메서드이름`또는`참조변수::메서드이름`으로 바꿀 수 있다.
+
+# 스트림 (stream)
+
+스트림은 데이터 소스를 추상화 하고, 데이터를 다루는데 자주 사용되는 메서드들을 정의해 놓았다.
+
+- 예를 들어 list를 정렬할 때는 Collections.sort()를 써야하고 배열을 정렬할 때는 Arrays.sort()를 사용해야 하기 때문에 이런 불편함을 해결하기 위해 나타났다.
+
+## 스트림의 특징
+
+1. 스트림은 데이터 소스를 변경하지않는다.
+2. 스트림은 일회용이다.
+   - 스트림은 Iterator처럼 일회용이다.
+   - 스트림은 한번 사용하면 닫혀서 다시 사용할 수 없으므로 필요하다면 다시 스트림을 생성해야한다.
+3. 스트림은 작업을 내부 반복으로 처리한다.
+   - 반복문을 내부에 숨겨 구현되어있다.
+
+### 스트림의 연산
+
+스트림이 제공되는 연산은 중간 연산과 최종 연산으로 분류 할 수 있다.
+
+`중간연산` : 연산 결과가 스트림인 연산. 스트림에 연속해서 중간 연산할 수 있다.
+`최종연산` : 연산결과가 스트림이 아닌 연산. 스트림의 요소를 소모하므로 단 한번만 가능
+
+```java
+stream.distinct() //중간연산
+        .limit(5) //중간연산
+        .sorted() //중간연산
+        .forEach(System.out::println); // 최종연산
+```
+
+이렇게 중간연산은 stream을 반환하기 때문에 JS처럼 체이닝을 할 수 있다.
+
+### 기본형 스트림
+
+요소의 타입이 T인 스트림으로 인해 생기는 오토박싱&언박싱으로 인한 비효율을 줄이기 위해 데이터 소스를 기본형으로 다루는 스트림을 만들었다. 이는 Stream<Integer>이렇게 하는 것보다 효율이 좋다.
+
+- IntStream
+- LongStream
+- DoubleStream
+
+### 병렬스트림
+
+parallel()이라는 메서드를 호출해서 병렬로 연산을 수행하도록 지시한다. 모든 스트림은 기본적으로 병렬 스트림이 아니고 parallel()을 호출 한 것을 취소할 때만 sequential()을 사용한다
+
+```java
+int sum = strStream.parallel() // strStream을 병렬스트림으로 전환
+                   .mapToInt(s -> s.length())
+                   .sum();
+```
+
+병렬처리가 항상 더 빠른 결과를 얻게 해주는 것은 아니므로 필요할 때만 사용한다.
+
+# Reference
+
+- 남궁성, Java의 정석 (3rd Edition), 도우출판
+- 함수형 인터페이스 사진 : https://velog.io/@oyeon/14-78-java.util.function-%ED%8C%A8%ED%82%A4%EC%A7%80

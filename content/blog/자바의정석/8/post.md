@@ -169,7 +169,8 @@ class MyException extends Exception{
 }
 ```
 
-## 출처
+# Reference
 
+- 남궁성, Java의 정석 (3rd Edition), 도우출판
 - Exception 관련 사진 : https://staticclass.tistory.com/69
 - try-with-resource : https://ryan-han.com/post/java/try_with_resources/

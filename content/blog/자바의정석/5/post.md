@@ -83,3 +83,7 @@ char[] toCharArray // 문자열을 char array로 변환하여 반환한다.
 ```java
 타입[][] 변수이름 = new 타입[row][column]
 ```
+
+# Reference
+
+- 남궁성, Java의 정석 (3rd Edition), 도우출판

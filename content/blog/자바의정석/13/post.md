@@ -380,4 +380,5 @@ public class myClass{
 
 # Reference
 
-annotation 사진 출처 : https://velog.io/@gkskaks1004/%EC%96%B4%EB%85%B8%ED%85%8C%EC%9D%B4%EC%85%98
+- 남궁성, Java의 정석 (3rd Edition), 도우출판
+- annotation 사진 출처 : https://velog.io/@gkskaks1004/%EC%96%B4%EB%85%B8%ED%85%8C%EC%9D%B4%EC%85%98

@@ -278,7 +278,8 @@ class RegularEx1{
 
 추후 추가
 
-## Reference
+# Reference
 
-https://dlsdn73.tistory.com/376
-https://beccacatcheserrors.tistory.com/16
+- 남궁성, Java의 정석 (3rd Edition), 도우출판
+- https://dlsdn73.tistory.com/376
+- https://beccacatcheserrors.tistory.com/16

@@ -129,3 +129,7 @@ Loop1 : for(int i=0; i<10; i++){
 	}
 }
 ```
+
+# Reference
+
+- 남궁성, Java의 정석 (3rd Edition), 도우출판
