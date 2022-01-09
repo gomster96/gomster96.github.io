@@ -58,6 +58,8 @@ FTP란 File Transfer Protocol의 약자로 사용자 PC와 호스팅 서버 간�
   - protocol : 우리는 닷홈의 ftp를 사용할 것이므로 ftp로 변경
   - port : 닷홈 연결은 21번 포트를 사용하므로 21번으로 적음
 
-    <p align="center"><img src="./6.png" height="300px" width="400px"></p>
+        <p align="center"><img src="./6.png" height="300px" width="400px"></p>
 
-    <p align="center"><img src="./7.png" height="300px" width="400px"></p>
+        <p align="center"><img src="./7.png" height="300px" width="600px"></p>
+
+    위에 SFTP : Download Project를 통해 remote에 있는 프로젝트를 local로 가져올 수 있다. 이후 html, css, js 파일을 수정함으로서 내가 원하는 웹페이지를 개발 할 수 있다.
