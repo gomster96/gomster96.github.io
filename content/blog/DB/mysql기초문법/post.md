@@ -1,7 +1,7 @@
 ---
 title: 'mysql CRUD 문법'
 date: 2022-01-11 18:58:08
-category: 'PS'
+category: 'DB'
 draft: false
 ---
 
