@@ -216,6 +216,271 @@ SequenceInputStream in = new SequenceInputStream(file1, file2);
 
 <p align="center"><img src="10.png" height="800px" width="600px"></p>
 
+# 문자기반 스트림
+
+문자데이터를 다루는데도 스트림이 똑같이 사용된다. 단 앞에서 사용하는 바이트 기반 스트림과의 사용법이 거의 같기 때문에 가볍게 보고 넘어가면 좋을 것 같다.
+
+## Reader와 Writer
+
+- Reader와 Writer를 사용하고, byte배열 대신 char배열을 사용한다.
+  <p align="center"><img src="11.png" height="800px" width="600px"></p>
+
+## FileReader와 FileWriter
+
+- 파일로부터 텍스트데이터를 읽고 쓰는데 사용한다.
+- 사용법은 FileInputStream, FileOutputStream과 거의 같다.
+
+## PipedReader와 PipedWriter
+
+- 쓰레드간의 데이터를 주고 받을 때 사용한다.
+- 입력과 출력스트림을 하나의 스트림으로 연결(connect)해서 데이터를 주고받는다는 특징이 있다.
+- 한쪽 스트림만 닫아도 나머지 스트림은 자동으로 닫힌다.
+
+```java
+import java.io.*;
+public class PipedReaderWriter {
+    public static void main(String[] args){
+        InputThread inThread = new InputThread("InputThread");
+        OutputThread outThread = new OutputThread("OutputThread");
+
+        inThread.connect(outThread.getOutput());
+
+        inThread.start();
+        outThread.start();
+    }
+}
+
+class InputThread extends Thread{
+    PipedReader input = new PipedReader();
+    StringWriter sw = new StringWriter();
+
+    InputThread(String name){
+        super(name);
+    }
+
+    public void run(){
+        try{
+            int data = 0;
+            while((data=input.read()) != -1){
+                sw.write(data);
+            }
+            System.out.println(getName() + " received" + sw.toString());
+        } catch(IOException e) {}
+    }
+    public PipedReader getInput(){
+        return input;
+    }
+    public void connect(PipedWriter output){
+        try{
+            input.connect(output);
+        } catch (IOException e){}
+    }
+}
+
+class OutputThread extends Thread{
+    PipedWriter output = new PipedWriter();
+
+    OutputThread(String name){
+        super(name);
+    }
+
+    public void run(){
+        try{
+            String msg = "Hello";
+            System.out.println(getName() + " sent : " + msg);
+            output.write(msg);
+            output.close();
+        } catch (IOException e){}
+    }
+    public PipedWriter getOutput(){
+        return output;
+    }
+
+    public void connect(PipedReader input){
+        try{
+            output.connect(input);
+        } catch(IOException e){}
+    }
+}
+```
+
+## StringReader 와 StringWriter
+
+- CharArrayReader/CharArrayWriter 와 같이 입출력 대상이 메모리인 스트림이다.
+- StringWriter에 출력되는 데이터는 내부의 StringBuffer에 저장된다.
+
+```java
+StringBuffer getBuffer() : StringWriter에 출력된 데이터가 저장된 StringBuffer를 반환한다.
+String toSTring() : StringWriter에 출력된 (StringBuffer에 저장된) 문자열을 반환한다.
+```
+
+```java
+import java.io.*;
+
+class StringReaderWriterEx{
+  public static void main(String[] args){
+    String inputData = "ABCD";
+    StringReader input = new StringReader(inputData);
+    StringWriter output = new StringWriter();
+
+    int data = 0;
+    try{
+      while((data = input.read()) != -1) {
+        output.write(data);
+      }
+    } catch(IOException e) {};
+
+    System.out.println("Input Data   :" + inputData);
+    System.out.println("Output Data  :" + output.toString());
+    System.out.println("Output Data  :" + output.getBuffer().toString());
+
+  }
+}
+```
+
+# 문자기반의 보조 스트림
+
+## BufferedReader 와 BufferedWriter
+
+BufferedReader와 BufferedWriter는 버퍼를 이용해서 입출력의 효율을 높여주기 때문에 알고리즘 문제를 풀때 정말 무조건 사용하게 된다. 아래 예제만 잘 알고있어도 충분히 이해할 것이다.
+
+```java
+import java.io.*;
+public class BufferedReaderEx1 {
+    public static void main(String[] args){
+        try{
+            FileReader fr = new FileReader("BufferedReaderEx1.java");
+            BufferedReader br = new BufferedReader(fr);
+
+            String line = "";
+
+            for(int i=1; (line = br.readLine()) != null; i++){
+                // ";"를 포함한 라인을 출력한다.
+                if(line.indexOf(";") != -1) System.out.println(i+":"+line);;
+            }
+            br.close();
+        } catch (IOException e){
+            System.out.println(e.getMessage());
+        }
+    }
+}
+
+```
+
+## InputStreamReader와 OutputStreamWriter
+
+- 바이트 기반 스트림을 문자 기반 스트림으로 연결시켜주는 역할을 하는 보조스트림
+- 바이트 기반 스트림 데이터를 지정된 인코딩 문자데이터 변환작업을 수행한다.
+- OS에서 사용하는 인코딩 데이터 종류확인법
+  - `System.out.println(System.getProperties().get("sun.jnu.encoding"));`
+
+# 표준 입출력과 File
+
+표준 입출력은 콘솔(console, 도스창)을 통한 데이터 입력과 콘솔로의 데이터 출력을 의미한다.
+
+자바에서는 표준 입출력(standard I/O)을 위해 3가지 입출력 스트림인 System.in, System.out, System.err 를 제공하는데, 이는 자바 어플리케이션 실행과 동시에 사용할수 있게 자동 생성되기 때문에 별도로 스트림을 생성하는 코드를 작성하지 않아도 사용이 가능하다.
+
+```java
+System.in : 콘솔로부터 데이터를 입력 받는 데 사용
+System.out : 콘솔로 데이터를 출력하는데 사용
+System.err : 콘솔로 데이터를 출력하는데 사용
+```
+
+## RandomAccessFile
+
+- 하나의 스트림으로 파일의 입력과 출력을 모두 수행할 수 있는 스트림
+- 파일의 어느 위치에나 읽기, 쓰기가 가능하다.
+  - 내부적으로 파일 포인터 사용
+  - 다른 모든 입출력들도 이를 가지고 있지만, 내부적으로만 사용되기에 작업자가 자유롭게 이를 바꿀 수 없다.
+- DataInputStream, DataOutputStream 처럼 기본 자료형 단위로 데이터를 읽고 쓸 수 있다.
+  <p align="center"><img src="12.png" height="200px" width="600px"></p>
+
+## File
+
+파일은 기본적이면서도 가장 많이 사용되는 입출력 대상이다. 자바에서는 File클래스를 통해서 파일과 디렉토리를 다룰 수 있도록 하고 있다.
+
+  <p align="center"><img src="13.png" height="400px" width="600px"></p>
+
+- File인스턴스를 생성했다고 해서 파일이나 디렉토리가 생기는 것이 아니다.
+- 새로운 파일을 생성하기 위해서 File인스턴스를 생성한 다음, 출력스트림을 생성하거나 createNewFile()을 호출해야한다.
+
+1. 이미 존재하는 파일을 참조할 때 :
+
+   ```java
+   File f = new File("파일경로", "파일이름);
+   ```
+
+2) 기존에 없는 파일을 새로 생성할때 :
+   ```java
+   File f = new File("파일경로", "파일이름");
+   f.createNewFile(); // 이때 새로운 파일이 생성된다.
+   ```
+
+### 파일 관련 메소드
+
+  <p align="center"><img src="14.png" height="700px" width="600px"></p>
+
+# 직렬화(Serialization)
+
+직렬화(serialization)란 객체를 데이터 스트림으로 만드는 것을 뜻한다. 객체에 저장된 데이터를 스트림에 쓰기(write)위해 연속적인(serial) 데이터로 변환하는 것을 말한다.
+
+- 객체를 저장한다는 것은 객체의 모든 인스턴스 변수의 값을 저장하는 것과 같은 의미이다.
+- 객체의 직렬화, 역직렬화에는 ObjectInputStream, ObjectOutputStream을 사용한다.
+  <p align="center"><img src="15.png" height="250px" width="600px"></p>
+
+위의 사진처럼 객체를 직렬화하여 스트림으로 보내고, 다시 받을 때는 역직렬화 과정을 통해 다시 객체를 만들어 준다.
+
+## ObjectInputStream, ObjectOutputStream
+
+ObjectInputStream오ㅓㅏ ObjectOutputStream은 결국 보조스트림이기 때문에 사용하기전에 입출력할 스트림을 지정해 주어야한다.
+
+```java
+ObjectInputStream(InputStream in)
+ObjectOutputStream(OutputSTream out)
+```
+
+직렬화 예시
+
+```java
+FileOutputStream fos = new FileOutputStream("objectfile.ser");
+ObjectOutputStream out = new ObjectOutputSTream(fos);
+
+out.writeObject(new UswerInfo());
+```
+
+역직렬화 예시
+
+```java
+FileInputStream fis = new FileInputStream("objectfile.ser");
+ObjectInputStream in = new ObjectInputStream(fis);
+
+UserInfo info = (UserInfo)in.readObject();
+```
+
+<p align="center"><img src="16.png" height="300px" width="600px"></p>
+
+## 직렬화가 가능한 클래스 만들기 - Serializable 그리고 transient
+
+직렬화가 가능한 클래스를 만드는 방법은 직렬화 하고자 하는 클래스가 java.io.Srializable 인터페이스를 구현하면 된다.
+
+```java
+public class MyClass implements Serializable{
+  String name;
+  String password;
+  int age;
+}
+```
+
+클래스에 직렬화가 안되거나 하면 안되는 객체에 대한 참조를 포함하고 있다면 제어자 transient를 붙여서 직렬화 대상에서 제회되도록 할 수 있다.
+
+```java
+public class UserInfo implements Serializable{
+  String name;
+  transient String password; // 직렬화 대상에서 제외된다.
+  int age;
+}
+```
+
 # Reference
 
 - 남궁성, Java의 정석 (3rd Edition), 도우출판
