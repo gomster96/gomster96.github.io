@@ -1,8 +1,8 @@
 module.exports = {
   title: `Gomster`,
-  description: `항상 노력하고 나아가는 주니어 백엔드 개발자 `,
+  description: `항상 노력하고 나아가는 대학생 백엔드 개발자 `,
   author: `Gomster`,
-  introduction: `항상 노력하고 나아가는 주니어 백엔드 개발자입니다.`,
+  introduction: `항상 노력하고 나아가는 백엔드 개발자가 되고 싶은 대학생입니다.`,
   siteUrl: `https://gomster96.github.io`, // Your blog site url
   social: {
     twitter: ``, // Your Twitter account
