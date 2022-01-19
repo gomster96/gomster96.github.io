@@ -38,7 +38,7 @@ class OS(){
 
 # DL(Dependency Lookup)
 
-DL은 의존성 검색이다. 이는 Bean에 접근하기 위해 컨테니ㅓ가 제공하는 API를 이용하여 Bean을 Lookup 즉 찾는 것이다.
+DL은 의존성 검색이다. 이는 Bean에 접근하기 위해 컨테이너가 제공하는 API를 이용하여 Bean을 Lookup 즉 찾는 것이다.
 
 아래와 같이 Bean에 대한 정보가 있는 xml파일이 있다면
 
