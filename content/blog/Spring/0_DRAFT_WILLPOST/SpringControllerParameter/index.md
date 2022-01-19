@@ -2,7 +2,7 @@
 title: Spring Controller의 parameter를 받아오는 방법
 date: 2022-01-19 22:31:00
 category: 'Spring'
-draft: false
+draft: true
 ---
 
 # 예제는 내가 바꾸기
