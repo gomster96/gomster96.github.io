@@ -1,6 +1,6 @@
 ---
 title: Spring 게시판 CRUD 예제
-date: 2022-01-16 15:06:05
+date: 2022-01-21 15:06:05
 category: 'Spring'
 draft: false
 ---
