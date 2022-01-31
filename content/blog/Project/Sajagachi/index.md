@@ -2,10 +2,12 @@
 title: 사자같이 Sajagachi
 date: 2022-01-10 19:00:04
 category: 'Project'
-draft: false
+draft: true
 ---
 
 안녕하세요. 이번 포스팅에서는 제가 2021 네이버 부스트캠프에서 한달 동안 진행했던 프로젝트에 대해서 소개하겠습니다.
+
+- [깃허브로 이동](https://github.com/boostcampwm-2021/WEB19-sajagachi)
 
 # 사자같이
 
@@ -45,7 +47,18 @@ draft: false
 
 ## 데모영상
 
-<iframe width="640" height="360" src="https://www.youtube.com/watch?v=jfSocNG3zHs&ab_channel=ByungwoongAn"  
- frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+[![사자같이 데모영상](1.png)](https://www.youtube.com/watch?v=jfSocNG3zHs&ab_channel=ByungwoongAn)
 
-<!-- <iframe width="560" height="315" src="https://www.youtube.com/watch?v=jfSocNG3zHs&ab_channel=ByungwoongAn" frameborder="0" allowfullscreen></iframe> -->
+## 기술스택
+
+<p align="center"><img src="stack.png" height="400px" width="600px"></p>
+
+# 내가 구현한 기능
+
+## 슬로우 쿼리 개선
+
+## 위치, 카테고리, 검색어 기반 필터링 및 필터링 모달 구현
+
+## 메인페이지 레이아웃, 기능, 관련 API 구현
+
+## 채팅페이지 레이아웃, 기능, 관련 API 구현
