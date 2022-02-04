@@ -26,7 +26,7 @@ static class Main{
         int from;
         int to;
         int dis;
-        public Node(int from, int to, int dis){
+        public Edge(int from, int to, int dis){
             this.from = from;
             this.to = to;
             this.dis = dis;
