@@ -2,7 +2,7 @@
 title: '백준 2748번 JAVA : 피보나치 수2'
 date: 2022-01-18 18:06:04
 category: 'PS'
-draft: true
+draft: false
 ---
 
 # 문제

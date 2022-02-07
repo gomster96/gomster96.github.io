@@ -2,7 +2,7 @@
 title: '백준 2003번 JAVA : 수들의 합'
 date: 2022-01-18 18:06:03
 category: 'PS'
-draft: true
+draft: false
 ---
 
 # 문제

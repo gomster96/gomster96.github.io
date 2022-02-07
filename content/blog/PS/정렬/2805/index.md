@@ -2,7 +2,7 @@
 title: '백준 2805번 JAVA : 나무자르기'
 date: 2022-01-18 18:06:04
 category: 'PS'
-draft: true
+draft: false
 ---
 
 # 문제

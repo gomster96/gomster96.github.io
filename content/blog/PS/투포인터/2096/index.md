@@ -2,7 +2,7 @@
 title: '백준 2096번 JAVA : 내려가기'
 date: 2022-01-18 18:06:06
 category: 'PS'
-draft: true
+draft: false
 ---
 
 # 문제

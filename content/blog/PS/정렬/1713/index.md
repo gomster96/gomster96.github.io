@@ -2,7 +2,7 @@
 title: '백준 1713번 JAVA : 후보 추천하기'
 date: 2022-01-18 18:06:02
 category: 'PS'
-draft: true
+draft: false
 ---
 
 # 문제

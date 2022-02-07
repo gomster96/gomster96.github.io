@@ -2,7 +2,7 @@
 title: '백준 1072번 JAVA : 게임'
 date: 2022-01-18 18:06:08
 category: 'PS'
-draft: true
+draft: false
 ---
 
 # 문제

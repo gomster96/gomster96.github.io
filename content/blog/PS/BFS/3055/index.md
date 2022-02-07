@@ -2,7 +2,7 @@
 title: '백준 3055번 JAVA : 탈출'
 date: 2022-01-18 18:06:00
 category: 'PS'
-draft: true
+draft: false
 ---
 
 # 문제

@@ -2,7 +2,7 @@
 title: '백준 1806번 JAVA : 부분 합'
 date: 2022-01-18 18:06:05
 category: 'PS'
-draft: true
+draft: false
 ---
 
 # 문제

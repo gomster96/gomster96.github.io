@@ -2,7 +2,7 @@
 title: '백준 2143번 JAVA : 두 배열의 합'
 date: 2022-01-18 18:06:07
 category: 'PS'
-draft: true
+draft: false
 ---
 
 # 문제

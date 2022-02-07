@@ -2,7 +2,7 @@
 title: '백준 1759번 JAVA : 암호만들기'
 date: 2022-01-17 11:48:08
 category: 'PS'
-draft: true
+draft: false
 ---
 
 # 문제
