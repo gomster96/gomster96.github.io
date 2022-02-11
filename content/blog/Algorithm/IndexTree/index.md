@@ -1,5 +1,5 @@
 ---
-title: '크루스칼 알고리즘 (Kruskal Algorithm)'
+title: '인덱스 트리 (Index Tree)'
 date: 2022-02-10 15:33:19
 category: 'Algorithm'
 draft: false
