@@ -71,3 +71,7 @@ JPA는 우리가 대부분 사용하는 CRUD를 다음 4개의 메소드로 가�
 * 유지보수가 좋음
 * 패러다임의 불일치 해결
 * 성능
+
+# Reference
+
+- [김영한, 자바 ORM 표준 JPA 프로그래밍 - 기본편](https://www.inflearn.com/course/ORM-JPA-Basic)
