@@ -154,6 +154,64 @@ public class KMP {
 
 ```
 
+# KMP 내용추가
+
+더욱 효율적으로 KMP알고리즘을 해결하는 방법이 있기 때문에 다음의 코드를 추가한다. 관련 설명은 [DDijkstra's Record 블로그](https://devje8.tistory.com/24) 에 잘 설명되어있다.
+
+```java
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+public class KMP2 {
+    public static int result;
+    public static int[] pi;
+    public static String origin, pattern;
+
+    public static void main(String[] args) throws Exception{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        origin = br.readLine();
+        pattern = br.readLine();
+
+        pi = new int[pattern.length()];
+        getPi();
+        KMP();
+    }
+    private static void getPi(){
+        int j=0;
+        for(int i=1; i<pattern.length(); i++){
+            // 맞는 위치가 나올 때까지 j-1칸의 공통 부분 위치로 이동
+            while(j>0 && pattern.charAt(i) != pattern.charAt(j)){
+                j = pi[j-1];
+            }
+            // 맞는경우
+            if(pattern.charAt(i) == pattern.charAt(j)){
+                // i길이 문자열의 공통길이는 j의 위치 + 1
+                pi[i] = ++j;
+            }
+        }
+    }
+    private static void KMP(){
+        int j=0;
+        for(int i=0; i<origin.length(); i++){
+            // 맞는 위치가 나올 때까지 j-1칸의 공통 부분 위치로 이동
+            while (j > 0 && origin.charAt(i) != pattern.charAt(j)){
+                j = pi[j-1];
+            }
+            // 맞는 경우
+            if(origin.charAt(i) == pattern.charAt(j)){
+                if(j == pattern.length() - 1){
+                    result = 1;
+                    break;
+                }
+                // 맞았지만 패턴이 끝나지 않았다면 j를 증가
+                else ++j;
+            }
+        }
+    }
+}
+
+```
+
 # Reference
 
 - https://chanhuiseok.github.io/posts/algo-14/
