@@ -72,7 +72,7 @@ int open(const char* pathname, int flags, mode_t mode);
   - O_RDONLY : 읽기 전용 모드로 파일을 연다.
   - O_WRONLY : 쓰기 전용 모드로 파일을 연다
   - O_RDWR - 읽기, 쓰기 겸용 모드로 파일을 연다.
-  - O_CRATE : 필요한 경우 팡리을 생성한다.
+  - O_CRATE : 필요한 경우 파일을 생성한다.
   - O_TRUNC : 존재하던 데이터를 모두 삭제한다.
   - O_APPEND : 존재하던 데이터를 보존하고 뒤에 이어서 저장한다.
   - O_DIRECTORY : pathname이 directory가 아니면 오류가 발생한다.
