@@ -13,6 +13,7 @@ draft: false
 - 직접적으로 kernel의 system call을 사용하는 것보다는 주로 Application Programming Interface(API)를 통해 접근할 수 있도록 한다.
 
 <p align="center"><img src="1.png" height="130px" width="400px"></p>
+<!-- <p align="center"><img src="1.png" height="130px" width="400px"></p> -->
 
 ## System Call 과 Dual-mode operation
 
