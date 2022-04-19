@@ -30,7 +30,106 @@ The intent of the template method is to define the overall structure of the oper
 
 <p align="center"><img src="1.png" height="350px" width="500px"></p>
 
-# 예제 코드
+# 이해를 위한 예제 Game
+
+먼저 Game를 구현하기 위한 메서드들을 abstract class 로 미리 만들어 놓는다.
+
+```java
+abstract class Game {
+    protected int playersCount;
+    abstract void initializeGame();
+    abstract void makePlay(int player);
+    abstract boolean endOfGame();
+    abstract void printWinner();
+}
+```
+
+이후 실행을 위한 template method를 정의한다.
+
+```java
+
+abstract class Game {
+    protected int playersCount;
+    abstract void initializeGame();
+    abstract void makePlay(int player);
+    abstract boolean endOfGame();
+    abstract void printWinner();
+
+    final  void playOneGame(int playersCount){
+        this.playersCount = playersCount;
+        initializeGame();
+        int j = 0;
+        while(!endOfGame()){
+            makePlay(j);
+            j = (j+1) % playersCount;
+        }
+        printWinner();
+    }
+}
+
+```
+
+이후 위에서 선언한 게임을 위한 template를 extend한 각각의 게임을 만든다.
+
+Monopoly 게임
+
+```java
+
+public class Monopoly extends Game {
+    @Override
+    void initializeGame() {
+        // initialize money
+    }
+
+    @Override
+    void makePlay(int player) {
+        // Process one turn of player
+    }
+
+    @Override
+    boolean endOfGame() {
+        // return true if game is over according to Monopoly rules
+        return false;
+    }
+
+    @Override
+    void printWinner() {
+    // Display who wone
+    }
+}
+
+```
+
+체스게임
+
+```java
+
+public class Chess extends Game {
+    @Override
+    void initializeGame() {
+        // initialize money
+    }
+
+    @Override
+    void makePlay(int player) {
+        // Process one turn of player
+    }
+
+    @Override
+    boolean endOfGame() {
+        // return true if game is over according to Monopoly rules
+        return false;
+    }
+
+    @Override
+    void printWinner() {
+    // Display who wone
+    }
+}
+
+```
+
+# 예제 코드 - SNS
 
 ## Main 클래스
 
