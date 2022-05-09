@@ -148,7 +148,7 @@ public class Main {
         String password = reader.readLine();
 
         // Enter the message.
-        System.out.print("Input message: ");
+        System.out.print("Input message : ");
         String message = reader.readLine();
 
         System.out.println("\nChoose social network for posting message.\n" +
