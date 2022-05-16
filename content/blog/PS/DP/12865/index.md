@@ -120,6 +120,40 @@ public class Main {
 
 ```
 
+## BOTTOM_UP 2
+
+```java
+public class Main {
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st;
+        StringBuilder sb = new StringBuilder("");
+
+        st = new StringTokenizer(br.readLine());
+
+        int N = Integer.parseInt(st.nextToken());
+        int K = Integer.parseInt(st.nextToken());
+
+        int[][] item = new int[N+1][2]; //weight, value
+        for(int i=1; i<=N; i++){
+            st = new StringTokenizer(br.readLine());
+            item[i][0] = Integer.parseInt(st.nextToken()); // weight
+            item[i][1] = Integer.parseInt(st.nextToken()); // value
+        }
+
+        int[] dp = new int[K+1];
+
+        for(int i=1; i<=N; i++){
+            for(int k = K; k>=item[i][0]; k--){
+                dp[k] = Math.max(dp[k], dp[k-item[i][0]] + item[i][1]);
+            }
+        }
+
+        System.out.println(dp[K]);
+    }
+}
+```
+
 # 회고
 
 기본적인 문제지만 난 해결하지 못했다. 더 잘 익혀서 다음에는 풀 수 있도록 해야겠다.
