@@ -1,6 +1,6 @@
 ---
 title: '닷홈(dothome)으로 웹 호스팅 하기'
-date: 2022-01-09 17:38:13
+date: 2022-07-10 17:38:13
 category: 'FE'
 draft: false
 ---

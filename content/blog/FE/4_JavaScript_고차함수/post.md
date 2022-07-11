@@ -1,6 +1,6 @@
 ---
 title: 'JavaScript, 화살표 함수와 고차함수'
-date: 2022-01-09 20:10:13
+date: 2022-07-10 20:10:13
 category: 'FE'
 draft: false
 ---
