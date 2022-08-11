@@ -2,7 +2,7 @@
 title: '백준 22860번 JAVA : 폴더 정리 (small)'
 date: 2022-08-11 18:06:09
 category: 'PS'
-draft: true
+draft: false
 ---
 
 # 문제
