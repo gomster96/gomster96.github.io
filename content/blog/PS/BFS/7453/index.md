@@ -2,7 +2,7 @@
 title: '백준 7453번 JAVA : 합이 0인 네 정수'
 date: 2022-01-18 18:06:09
 category: 'PS'
-draft: true
+draft: false
 ---
 
 # 문제
