@@ -1,6 +1,6 @@
 ---
 title: '백준 2011번 JAVA : 암호 코드'
-date: 2022-05-16 16:40:02
+date: 2022-08-29 16:40:02
 category: 'PS'
 draft: false
 ---
