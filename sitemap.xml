@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+<url> <loc>https://gomster96.github.io/Spring/SpringAndSingleton/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://gomster96.github.io/Spring/SpringContainer/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://gomster96.github.io/PS/투포인터/20922/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://gomster96.github.io/PS/DP/2011/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -73,8 +74,8 @@
 <url> <loc>https://gomster96.github.io/PS/그리디/19598/post/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://gomster96.github.io/PS/그리디/21758 - 수정필요/post/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://gomster96.github.io/PS/그리디/21314/post/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://gomster96.github.io/PS/그리디/16953/post/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://gomster96.github.io/PS/그리디/1931/post/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://gomster96.github.io/PS/그리디/16953/post/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://gomster96.github.io/PS/그리디/20115/post/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://gomster96.github.io/자바의정석/18/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://gomster96.github.io/DB/mysql기초문법/post/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
