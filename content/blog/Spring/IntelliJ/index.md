@@ -104,8 +104,8 @@ IntelliJ 다운로드 페이지
 
 ## 학생인증
 
-- https://goddaehee.tistory.com/215
 - https://taltal.tistory.com/122
+- https://goddaehee.tistory.com/215
 
 ## Mac IntelliJ 설치
 
