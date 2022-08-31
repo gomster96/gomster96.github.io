@@ -15,8 +15,7 @@ IntelliJ란 Java 개발 툴(IDE) 중 하나인 프로그램입니다. 이전에�
    이클립스를 사용하다보면 이유는 모르겠는데 안되다가 프로젝트 clean (maven clean)으로 해결 될 때가 자주 있습니다. 이에 반해 저는 IntelliJ를 사용하면서 이러한 오류를 느껴본 적이 없습니다.
 2. 편리하고 다양한 단축키 -> 개발하는데 편리
    제 기준으로는 IntelliJ에서 제공하는 많은 단축키가 개발하는데의 많은 편의를 제공합니다.
-
-- [제가 자주 사용하는 IntelliJ 명령어 (맥북 기준)](https://teal-poultry-405.notion.site/Intellij-82816fea95d843dcafb8775d1256c5f8)
+   - [제가 자주 사용하는 IntelliJ 명령어 (맥북 기준)](https://teal-poultry-405.notion.site/Intellij-82816fea95d843dcafb8775d1256c5f8)
 
 ## 단점
 
