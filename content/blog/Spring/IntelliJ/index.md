@@ -1,5 +1,5 @@
 ---
-title: IntelliJ
+title: IntelliJ 학생 인증 및 설치 방법
 date: 2022-08-31 07:41:04
 category: 'Spring'
 draft: false
