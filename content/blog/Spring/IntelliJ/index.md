@@ -91,12 +91,12 @@ IntelliJ 다운로드 페이지
 <p align="center"><img src="./14.png" height="300px" width="150px"></p>
 - 이후 설치된 것을 다음과 같이 확인할 수 있습니다.
 
-이후 클릭해서 들어가면 DataSharing 해도 되는지 동의 문구가 나오는데, 괜찮다면 동의하고, 괜찮지 않다면 Don't Send 를 클릭하셔도 됩니다.
+클릭해서 들어가면 DataSharing 해도 되는지 동의 문구가 나오는데, 괜찮다면 동의하고, 괜찮지 않다면 Don't Send 를 클릭하셔도 됩니다.
 
 <p align="center"><img src="./16.png" height="250px" width="400px"></p>
 <p align="center"><img src="./15.png" height="250px" width="400px"></p>
 
-이후 계정 인증을 진행하고 실행하시면 다음과 같은 화면이 나옵니다.
+계정 인증을 진행하고 실행하시면 다음과 같은 화면이 나옵니다.
 
 <p align="center"><img src="./8.png" height="250px" width="400px"></p>
 
