@@ -1,6 +1,6 @@
 ---
 title: '백준 16926번 JAVA : 배열 돌리기 1'
-date: 2022-00-01 18:06:09
+date: 2022-09-01 18:06:09
 category: 'PS'
 draft: false
 ---
