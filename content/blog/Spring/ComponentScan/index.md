@@ -41,7 +41,17 @@ Component 스캔은 탐색할 패키지의 시작위치를 (basePackages 옵션�
 
 하지만 결국 해당 어노테이션들의 내부를 보면 @Component 를 포함하고 있다.
 
-# Reference
+## Spring Boot, Spring project 에서의 Component Scan
 
-- https://hello-bryan.tistory.com/329
-- https://seokdev.site/300
+<p align="center"><img src="2.png" height="300px" width="600px"></p>
+
+SpringBoot의 경우 가장 먼저 생성되는 <프로젝트이름>Application 파일의 `@SpringBootApplication` 어노테이션 안에 `@ComponentScan` 어노테이션이 존재한다.
+
+또한 일반 Spring Legacy Project의 경우에는 xml 파일에서
+
+> <context:component-scan base-package="~~"></context:component-scan>
+> 태그를 통해 컴포넌트 스캔을 할 시작 패키지를 등록할 수 있다.
+
+# reference
+
+- 김영한, Spring 기본편
